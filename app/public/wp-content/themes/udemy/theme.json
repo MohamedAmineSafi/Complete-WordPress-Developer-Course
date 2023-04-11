@@ -85,7 +85,14 @@
         "typography": {
             "fontFamilies": [
                 {"fontFamily": "Rubik, sans-serif", "slug": "u-rubik", "name": "Udemy Rubik"}
-            ]
+            ],
+            "lineHeight": true,
+            "dropCap": true,
+            "fontWeight": true,
+            "fontStyle": true,
+            "textTransform": true,
+            "letterSpacing": true,
+            "textDecoration": true
         }
     },
     "styles": {
