@@ -49,6 +49,11 @@
                     "custom": false,
                     "gradients": [],
                     "customGradient": false
+                },
+                "typography": {
+                    "fontFamilies": [
+                        {"fontFamily": "Pacifico, sans-serif", "slug": "u-pacifico", "name": "Udemy Pacifico"}
+                    ]
                 }
             },
             "core/cover": {
@@ -63,6 +68,11 @@
             "radius": true,
             "style": true,
             "width": true
+        },
+        "typography": {
+            "fontFamilies": [
+                {"fontFamily": "Rubik, sans-serif", "slug": "u-rubik", "name": "Udemy Rubik"}
+            ]
         }
     },
     "styles": {
