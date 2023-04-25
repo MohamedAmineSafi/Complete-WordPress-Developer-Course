@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import './style.css';
 
 function Page() {
-  return React.createElement(
-    'div', null, [
-      React.createElement('h1', null, `Hi ${Date().toLocaleString()}`),
-      React.createElement('h2', null, 'Bye')
-    ]
+  return (
+    <>
+      <h1 className="orange">Hello World!</h1>
+      <p>Hey</p>
+    </>
   );
 }
 
