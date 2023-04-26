@@ -7,17 +7,18 @@ import './main.css'
 registerBlockType(block.name, {
     edit({attributes, setAttributes}) {
         const {content} = attributes;
-        const blockProps = useBlockProps({
-            className: 'fancy-header'
-        });
+        const blockProps = useBlockProps();
 
-        return (<RichText
-                    {...blockProps}
-                    tagName='h2'
-                    placeholder={__('Enter Heading', 'udemy-plus')}
-                    value={content}
-                    onChange={newValue => setAttributes({ content: newValue })}
+        return (
+            <div {...blockProps}>
+                <RichText
+                        className='fancy-header'
+                        tagName='h2'
+                        placeholder={__('Enter Heading', 'udemy-plus')}
+                        value={content}
+                        onChange={newValue => setAttributes({ content: newValue })}
                 />
+            </div>
         );
     },
     save({attributes}) {
