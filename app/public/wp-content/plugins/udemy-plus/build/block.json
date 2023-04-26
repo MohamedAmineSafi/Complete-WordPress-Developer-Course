@@ -18,5 +18,6 @@
     "content": {
       "type": "string"
     }
-  }
+  },
+  "style": "file:./index.css"
 }
