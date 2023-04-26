@@ -16,3 +16,12 @@ if (!function_exists('add_action')) {
     echo 'This file was not run by Wordpress';
     exit();
 }
+
+// Setup
+define('UP_PLUGIN_DIR', plugin_dir_path(__FILE__));
+
+// Includes
+include(UP_PLUGIN_DIR . 'includes/register-blocks.php');
+
+// Hooks
+add_action('init', 'up_register_blocks');
