@@ -4,7 +4,15 @@ import {__} from '@wordpress/i18n'
 import block from './block.json'
 
 registerBlockType(block.name, {
-    edit() {
-        return (<RichText tagName='h2' placeholder={__('Enter Heading', 'udemy-plus')} />)
+    edit({attributes, setAttributes}) {
+        const {content} = attributes;
+
+        return (<RichText
+                    tagName='h2'
+                    placeholder={__('Enter Heading', 'udemy-plus')}
+                    value={content}
+                    onChange={newValue => setAttributes({ content: newValue })}
+                />
+        );
     }
 });
