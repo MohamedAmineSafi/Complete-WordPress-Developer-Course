@@ -201,7 +201,8 @@ __webpack_require__.r(__webpack_exports__);
       value: content,
       onChange: newValue => setAttributes({
         content: newValue
-      })
+      }),
+      allowedFormats: ['core/bold', 'core/italic']
     }));
   },
   save(_ref2) {

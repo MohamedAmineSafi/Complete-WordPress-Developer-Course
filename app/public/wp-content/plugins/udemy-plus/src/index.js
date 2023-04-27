@@ -17,6 +17,7 @@ registerBlockType(block.name, {
                         placeholder={__('Enter Heading', 'udemy-plus')}
                         value={content}
                         onChange={newValue => setAttributes({ content: newValue })}
+                        allowedFormats={['core/bold', 'core/italic']}
                 />
             </div>
         );
