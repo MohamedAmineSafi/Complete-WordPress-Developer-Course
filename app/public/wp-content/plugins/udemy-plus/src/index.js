@@ -1,5 +1,6 @@
 import {registerBlockType} from '@wordpress/blocks'
-import {RichText, useBlockProps} from '@wordpress/block-editor'
+import {RichText, useBlockProps, InspectorControls} from '@wordpress/block-editor'
+import {PanelBody} from '@wordpress/components'
 import {__} from '@wordpress/i18n'
 import block from './block.json'
 import './main.css'
@@ -10,6 +11,12 @@ registerBlockType(block.name, {
         const blockProps = useBlockProps();
 
         return (
+            <>
+            <InspectorControls>
+                <PanelBody title={__('Colors', 'udemy-plus')}>
+                    Dummy Content
+                </PanelBody>
+            </InspectorControls>
             <div {...blockProps}>
                 <RichText
                         className='fancy-header'
@@ -20,6 +27,7 @@ registerBlockType(block.name, {
                         allowedFormats={['core/bold', 'core/italic']}
                 />
             </div>
+            </>
         );
     },
     save({attributes}) {
