@@ -238,10 +238,17 @@ __webpack_require__.r(__webpack_exports__);
       attributes
     } = _ref2;
     const {
-      content
+      content,
+      underline_color
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-      className: 'fancy-header'
+      className: 'fancy-header',
+      style: {
+        'background-image': `
+                    linear-gradient(transparent, transparent),
+                    linear-gradient(${underline_color}, ${underline_color});
+                `
+      }
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
       tagName: "h2",
