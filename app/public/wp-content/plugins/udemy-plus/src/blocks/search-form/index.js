@@ -41,7 +41,7 @@ registerBlockType(block.name, {
                         <div className="btn-wrapper">
                             <button type="submit" style={{
                                 'background-color': bgColor,
-                                color: textColor 
+                                color: textColor
                             }}>Search</button>
                         </div>
                     </form>
