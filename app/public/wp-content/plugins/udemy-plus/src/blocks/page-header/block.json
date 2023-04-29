@@ -9,6 +9,10 @@
     "attributes": {
         "content": {
             "type": "string"
+        },
+        "showCategory": {
+            "type": "boolean",
+            "default": false
         }
     },
     "editorScript": "file:./index.js",
