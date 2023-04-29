@@ -9,11 +9,15 @@ function up_search_form_render_cb($atts)
     ob_start();
     ?>
     <div style="<?php echo $styleAttr; ?>" class="wp-block-udemy-plus-search-form">
-        <h1>Search: Your search term here</h1>
-        <form>
-            <input type="text" placeholder="Search" />
+        <h1>
+            <?php esc_html_e('Search', 'udemy-plus'); ?>:
+            <?php the_search_query(); ?>
+        </h1>
+        <form action="<?php echo esc_url(home_url('/')); ?>">
+            <input type="text" placeholder="<?php esc_html_e('Search', 'udemy-plus'); ?>" name="s"
+                value="<?php the_search_query(); ?>" />
             <div class="btn-wrapper">
-                <button type="submit" style="<?php echo $styleAttr; ?>">Search</button>
+                <button type="submit" style="<?php echo $styleAttr; ?>"><?php esc_html_e('Search', 'udemy-plus'); ?></button>
             </div>
         </form>
     </div>
