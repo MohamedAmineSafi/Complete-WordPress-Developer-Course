@@ -8,7 +8,8 @@
   "textdomain": "udemy-plus",
   "attributes": {
     "content": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "showCategory": {
       "type": "boolean",
