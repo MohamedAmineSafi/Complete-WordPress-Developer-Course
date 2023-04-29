@@ -23,17 +23,22 @@ registerBlockType('udemy-plus/page-header', {
                         label={__('Show Category', 'udemy-plus')}
                         checked={ showCategory }
                         onChange={ (showCategory) => {setAttributes({showCategory})} }
+                        help={showCategory ? __('Category Shown', 'udemy-plus') : __('Custom content shown', 'udemy-plus')}
                     />
                 </PanelBody>
             </InspectorControls>
             <div {...blockProps}>
                 <div className="inner-page-header">
-                    <RichText
-                        tagName='h1'
-                        placeholder={__('Heading', 'udemy-plus')}
-                        value={content}
-                        onChange={(content) => {setAttributes({content})}}
-                    />
+                    {
+                        showCategory ? 
+                        <h1>{__('Category: Some Category', 'udemy-plus')}</h1> : 
+                        <RichText
+                            tagName='h1'
+                            placeholder={__('Heading', 'udemy-plus')}
+                            value={content}
+                            onChange={(content) => {setAttributes({content})}}
+                        />
+                    }
                 </div>
             </div>
         </>
