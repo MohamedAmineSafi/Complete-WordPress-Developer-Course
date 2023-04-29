@@ -6,7 +6,11 @@
     "category": "text",
     "description": "Adds a page header",
     "textdomain": "udemy-plus",
-    "attributes": {},
+    "attributes": {
+        "content": {
+            "type": "string"
+        }
+    },
     "editorScript": "file:./index.js",
     "style": "file:./index.css"
   }
