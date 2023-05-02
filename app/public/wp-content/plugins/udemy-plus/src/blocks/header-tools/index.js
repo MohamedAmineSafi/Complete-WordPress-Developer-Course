@@ -38,6 +38,8 @@ registerBlockType('udemy-plus/header-tools', {
           </PanelBody>
         </InspectorControls>
         <div { ...blockProps }>
+          {
+            showAuth && 
           <a className="signin-link open-modal" href="#">
             <div className="signin-icon">
               <i className="bi bi-person-circle"></i>
@@ -47,6 +49,7 @@ registerBlockType('udemy-plus/header-tools', {
               My Account
             </div>
           </a>
+          }
         </div>
       </>
     );
