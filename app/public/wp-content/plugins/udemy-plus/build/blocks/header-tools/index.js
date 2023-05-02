@@ -286,6 +286,13 @@ __webpack_require__.r(__webpack_exports__);
       onChange: newVal => setAttributes({
         showAuth: newVal === 'true'
       })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Show Login/Register Link', 'udemy-plus'),
+      help: showAuth ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Showing Link', 'udemy-plus') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Hiding Link', 'udemy-plus'),
+      checked: showAuth,
+      onChange: showAuth => setAttributes({
+        showAuth
+      })
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       className: "signin-link open-modal",
       href: "#"
