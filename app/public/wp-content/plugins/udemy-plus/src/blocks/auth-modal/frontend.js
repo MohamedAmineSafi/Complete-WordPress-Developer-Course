@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  signupForm.addEventListener("submit", (e) => {
+  signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const signupFieldset = signupForm.querySelector("fieldset");
@@ -60,5 +60,40 @@ document.addEventListener("DOMContentLoaded", () => {
             Please wait! We are creating your account!
         </div>
         `;
+
+    const formData = {
+      username: signupForm.querySelector("#su-name").value,
+      email: signupForm.querySelector("#su-email").value,
+      password: signupForm.querySelector("#su-password").value,
+    };
+
+    console.log(up_auth_rest.signup);
+
+    const response = await fetch(up_auth_rest.signup, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const responseJSON = await response.json();
+
+    if (responseJSON.status === 2) {
+      signupStatus.innerHTML = `
+        <div class="modal-status modal-status-success">
+          Success Your Account has been created!
+        </div>
+      `;
+
+      location.reload();
+    } else {
+      signupFieldset.removeAttribute("disabled");
+      signupStatus.innerHTML = `
+        <div class="modal-status modal-status-danger">
+          Unable to create account
+        </div>
+      `;
+    }
   });
 });
