@@ -7,7 +7,8 @@ function up_enqueue_scripts()
     ]);
 
     wp_add_inline_script(
-        'udemy-plus-auth-modal-script',
+        // This comes from the ID of the frontend.js file (you can see it from inspect element)
+        'udemy-plus-auth-modal-view-script',
         "const up_auth_rest = {$authURLs}",
         'before'
     );
