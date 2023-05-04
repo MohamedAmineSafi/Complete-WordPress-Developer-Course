@@ -258,7 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('udemy-plus/auth-modal', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("udemy-plus/auth-modal", {
   icon: {
     src: _icons_js__WEBPACK_IMPORTED_MODULE_5__["default"].primary
   },
@@ -272,15 +272,15 @@ __webpack_require__.r(__webpack_exports__);
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('General', 'udemy-plus')
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("General", "udemy-plus")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Show Register", 'udemy-plus'),
-      help: showRegister ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Showing registration form", 'udemy-plus') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Hiding registration form", 'udemy-plus'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Show Register", "udemy-plus"),
+      help: showRegister ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Showing registration form", "udemy-plus") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Hiding registration form", "udemy-plus"),
       checked: showRegister,
       onChange: showRegister => setAttributes({
         showRegister
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('This block is not previewable from the editor. View your site for a live demo.', 'udemy-plus')));
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("This block is not previewable from the editor. View your site for a live demo.", "udemy-plus")));
   }
 });
 }();
