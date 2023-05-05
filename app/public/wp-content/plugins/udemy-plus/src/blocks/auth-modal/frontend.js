@@ -67,8 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
       password: signupForm.querySelector("#su-password").value,
     };
 
-    console.log(up_auth_rest.signup);
-
     const response = await fetch(up_auth_rest.signup, {
       method: "POST",
       headers: {
@@ -92,6 +90,52 @@ document.addEventListener("DOMContentLoaded", () => {
       signupStatus.innerHTML = `
         <div class="modal-status modal-status-danger">
           Unable to create account
+        </div>
+      `;
+    }
+  });
+
+  signinForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const signinFieldset = signinForm.querySelector("fieldset");
+    signinFieldset.setAttribute("disabled", true);
+
+    const signinStatus = signinForm.querySelector("#signin-status");
+    signinStatus.innerHTML = `
+        <div class="modal-status modal-status-info">
+            Please wait! We are logging in to your account!
+        </div>
+        `;
+
+    const formData = {
+      user_login: signinForm.querySelector("#si-email").value,
+      password: signinForm.querySelector("#si-password").value,
+    };
+
+    const response = await fetch(up_auth_rest.signin, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const responseJSON = await response.json();
+
+    if (responseJSON.status === 2) {
+      signinStatus.innerHTML = `
+        <div class="modal-status modal-status-success">
+          Success! Logged In!
+        </div>
+      `;
+
+      location.reload();
+    } else {
+      signinFieldset.removeAttribute("disabled");
+      signinStatus.innerHTML = `
+        <div class="modal-status modal-status-danger">
+          Unable to log in
         </div>
       `;
     }
