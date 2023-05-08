@@ -27,6 +27,12 @@ function up_register_blocks()
             'options' => [
                 'render_callback' => 'up_auth_modal_render_cb'
             ]
+        ],
+        [
+            'name' => 'recipe-summary',
+            'options' => [
+                'render_callback' => 'up_recipe_summary_render_cb'
+            ]
         ]
     ];
 
