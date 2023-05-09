@@ -17,7 +17,20 @@ registerBlockType("udemy-plus/recipe-summary", {
 
     const [termIDs] = useEntityProp("postType", "recipe", "cuisine", postId);
 
-    useSelect(() => {}, [termIDs]);
+    const { cuisines } = useSelect(
+      (select) => {
+        const { getEntityRecords } = select("core");
+
+        return {
+          cuisines: getEntityRecords("taxonomy", "cuisine", {
+            include: termIDs,
+          }),
+        };
+      },
+      [termIDs]
+    );
+
+    console.log(cuisines);
 
     return (
       <>
