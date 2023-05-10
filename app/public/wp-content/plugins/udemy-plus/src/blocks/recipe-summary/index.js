@@ -4,6 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
 import { useSelect } from "@wordpress/data";
 import { Spinner } from "@wordpress/components";
+import Rating from "@mui/material/Rating/index.js";
 import icons from "../../icons.js";
 import "./main.css";
 
@@ -117,7 +118,9 @@ registerBlockType("udemy-plus/recipe-summary", {
             </div>
             <div className="recipe-metadata">
               <div className="recipe-title">{__("Rating", "udemy-plus")}</div>
-              <div className="recipe-data"></div>
+              <div className="recipe-data">
+                <Rating value={rating} readOnly />
+              </div>
               <i className="bi bi-hand-thumbs-up"></i>
             </div>
           </div>
