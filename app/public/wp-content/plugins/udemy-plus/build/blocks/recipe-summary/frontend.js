@@ -12055,7 +12055,7 @@ function RecipeRating(props) {
         return alert("You have already rated this recipe or you may need to log in");
       }
       setPermission(false);
-      await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+      const res = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
         path: "up/v1/rate",
         method: "POST",
         data: {
@@ -12063,6 +12063,9 @@ function RecipeRating(props) {
           rating
         }
       });
+      if (res.status == 2) {
+        setAvgRating(res.rating);
+      }
     }
   });
 }

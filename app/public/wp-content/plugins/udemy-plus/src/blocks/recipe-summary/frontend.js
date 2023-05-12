@@ -17,7 +17,7 @@ function RecipeRating(props) {
           );
         }
         setPermission(false);
-        await apiFetch({
+        const res = await apiFetch({
           path: "up/v1/rate",
           method: "POST",
           data: {
@@ -25,6 +25,10 @@ function RecipeRating(props) {
             rating,
           },
         });
+
+        if (res.status == 2) {
+          setAvgRating(res.rating);
+        }
       }}
     />
   );
