@@ -52,6 +52,12 @@ function up_rest_api_add_rating_handler($req)
 
     update_post_meta($postID, 'recipe_rating', $avgRating);
 
+    do_action('recipe_rated', [
+        'postID' => $postID,
+        'rating' => $rating,
+        'userID' => $userID
+    ]);
+
     $response = ['status' => 2];
     $response['rating'] = $avgRating;
     return $response;

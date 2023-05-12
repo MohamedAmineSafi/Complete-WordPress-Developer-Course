@@ -23,7 +23,7 @@ function up_recipe_summary_render_cb($atts, $content, $block)
 
     global $wpdb;
     $userID = get_current_user_id();
-    $ratingCount = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->prefix} 
+    $ratingCount = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->prefix}recipe_ratings  
     WHERE post_id=%d AND user_id=%d", $postID, $userID));
 
     ob_start();
