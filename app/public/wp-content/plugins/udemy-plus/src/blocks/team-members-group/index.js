@@ -38,6 +38,7 @@ registerBlockType("udemy-plus/team-members-group", {
       </>
     );
   },
+  // We use the save function for client side rendering, while we use the ob_start() for server side.
   save({ attributes }) {
     const blockProps = useBlockProps.save();
 
