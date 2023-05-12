@@ -13,6 +13,25 @@ function up_rest_api_add_rating_handler($req)
         return $response;
     }
 
+    $rating = round(floatval($params['rating']), 1);
+    $postID = absint($params['postID']);
+    $userID = get_current_user_id();
+
+    global $wpdb;
+    $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT * FROM {$wpdb->prefix}recipe_ratings 
+            WHERE post_id=%d AND user_id=%d"
+            ,
+            $postID,
+            $userID
+        )
+    );
+
+    if ($wpdb->num_rows > 0) {
+        return $response;
+    }
+
     $response = ['status' => 2];
     return $response;
 }
