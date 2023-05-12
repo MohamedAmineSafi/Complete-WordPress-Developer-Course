@@ -21,6 +21,11 @@ function up_recipe_summary_render_cb($atts, $content, $block)
 
     $rating = get_post_meta($postID, 'recipe_rating', true);
 
+    global $wpdb;
+    $userID = get_current_user_id();
+    $ratingCount = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->prefix} 
+    WHERE post_id=%d AND user_id=%d", $postID, $userID));
+
     ob_start();
     ?>
 
@@ -68,8 +73,9 @@ function up_recipe_summary_render_cb($atts, $content, $block)
                 <div class="recipe-title">
                     <?php _e('Rating', 'udemy-plus'); ?>
                 </div>
-                <div id="recipe-rating" class="recipe-data" data-post-id="<?php echo $postID; ?>"
-                    data-avg-rating="<?php echo $rating; ?>" data-logged-in="<?php echo is_user_logged_in(); ?>">
+                <div id="recipe-rating" class="recipe-data" data-rating-count="<?php echo $ratingCount; ?>"
+                    data-post-id="<?php echo $postID; ?>" data-avg-rating="<?php echo $rating; ?>"
+                    data-logged-in="<?php echo is_user_logged_in(); ?>">
                 </div>
                 <i class="bi bi-hand-thumbs-up"></i>
             </div>
