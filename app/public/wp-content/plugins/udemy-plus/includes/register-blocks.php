@@ -37,7 +37,7 @@ function up_register_blocks()
         ['name' => 'team-members-group'],
         ['name' => 'team-member'],
     ];
-
+    //
     foreach ($blocks as $block) {
         register_block_type(
             UP_PLUGIN_DIR . 'build/blocks/' . $block['name'],
