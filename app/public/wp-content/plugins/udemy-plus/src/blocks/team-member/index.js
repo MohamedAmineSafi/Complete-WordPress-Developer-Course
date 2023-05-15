@@ -7,6 +7,7 @@ import {
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { PanelBody, TextareaControl } from "@wordpress/components";
+import { isBlobURL } from "@wordpress/blob";
 import icons from "../../icons.js";
 import "./main.css";
 
@@ -42,10 +43,20 @@ registerBlockType("udemy-plus/team-member", {
               accept={"image/*"}
               icon="admin-users"
               onSelect={(img) => {
+                let newImgURL = null;
+
+                if (isBlobURL(img.url)) {
+                  newImgURL = img.url;
+                } else {
+                  newImgURL = img.sizes
+                    ? img.sizes.teamMember.url
+                    : img.media_details.sizes.teamMember.source_url;
+                }
+
                 setAttributes({
                   imgID: img.id,
                   imgAlt: img.alt,
-                  imgURL: img.sizes.teamMember.url,
+                  imgURL: newImgURL,
                 });
               }}
               onError={(err) => console.error(err)}
