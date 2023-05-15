@@ -8,6 +8,7 @@ import {
 import { __ } from "@wordpress/i18n";
 import { PanelBody, TextareaControl, Spinner } from "@wordpress/components";
 import { isBlobURL } from "@wordpress/blob";
+import { useState } from "@wordpress/element";
 import icons from "../../icons.js";
 import "./main.css";
 
@@ -19,6 +20,8 @@ registerBlockType("udemy-plus/team-member", {
     const { name, title, bio, imgID, imgAlt, imgURL, socialHandles } =
       attributes;
     const blockProps = useBlockProps();
+
+    const [imgPreview, setImgPreview] = useState(imgURL);
 
     return (
       <>
@@ -37,8 +40,8 @@ registerBlockType("udemy-plus/team-member", {
         </InspectorControls>
         <div {...blockProps}>
           <div className="author-meta">
-            {imgURL && <img src={imgURL} alt={imgAlt} />}
-            {isBlobURL(imgURL) && <Spinner />}
+            {imgPreview && <img src={imgPreview} alt={imgAlt} />}
+            {isBlobURL(imgPreview) && <Spinner />}
             <MediaPlaceholder
               allowedTypes={["image"]}
               accept={"image/*"}
@@ -52,16 +55,18 @@ registerBlockType("udemy-plus/team-member", {
                   newImgURL = img.sizes
                     ? img.sizes.teamMember.url
                     : img.media_details.sizes.teamMember.source_url;
+
+                  setAttributes({
+                    imgID: img.id,
+                    imgAlt: img.alt,
+                    imgURL: newImgURL,
+                  });
                 }
 
-                setAttributes({
-                  imgID: img.id,
-                  imgAlt: img.alt,
-                  imgURL: newImgURL,
-                });
+                setImgPreview(newImgURL);
               }}
               onError={(err) => console.error(err)}
-              disableMediaButtons={imgURL}
+              disableMediaButtons={imgPreview}
               onSelectURL={(url) => {
                 setAttributes({
                   imgID: null,
