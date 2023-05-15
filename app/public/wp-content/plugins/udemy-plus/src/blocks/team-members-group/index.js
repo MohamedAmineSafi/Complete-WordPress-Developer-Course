@@ -15,7 +15,9 @@ registerBlockType("udemy-plus/team-members-group", {
   },
   edit({ attributes, setAttributes }) {
     const { columns, imageShape } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({
+      className: `cols-${columns}`,
+    });
 
     return (
       <>
@@ -25,6 +27,8 @@ registerBlockType("udemy-plus/team-members-group", {
               label={__("Columns", "udemy-plus")}
               onChange={(columns) => setAttributes({ columns })}
               value={columns}
+              min={2}
+              max={4}
             />
             <SelectControl
               label={__("Image Shape", "udemy-plus")}
@@ -61,7 +65,10 @@ registerBlockType("udemy-plus/team-members-group", {
   },
   // We use the save function for client side rendering, while we use the ob_start() for server side.
   save({ attributes }) {
-    const blockProps = useBlockProps.save();
+    const { columns } = attributes;
+    const blockProps = useBlockProps.save({
+      className: `cols-${columns}`,
+    });
 
     return (
       <div {...blockProps}>
