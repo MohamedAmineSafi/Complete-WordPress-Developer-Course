@@ -6,7 +6,7 @@ import {
   MediaPlaceholder,
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
-import { PanelBody, TextareaControl } from "@wordpress/components";
+import { PanelBody, TextareaControl, Spinner } from "@wordpress/components";
 import { isBlobURL } from "@wordpress/blob";
 import icons from "../../icons.js";
 import "./main.css";
@@ -38,6 +38,7 @@ registerBlockType("udemy-plus/team-member", {
         <div {...blockProps}>
           <div className="author-meta">
             {imgURL && <img src={imgURL} alt={imgAlt} />}
+            {isBlobURL(imgURL) && <Spinner />}
             <MediaPlaceholder
               allowedTypes={["image"]}
               accept={"image/*"}
