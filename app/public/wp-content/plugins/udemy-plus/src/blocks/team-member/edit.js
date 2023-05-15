@@ -5,7 +5,13 @@ import {
   MediaPlaceholder,
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
-import { PanelBody, TextareaControl, Spinner } from "@wordpress/components";
+import {
+  PanelBody,
+  TextareaControl,
+  Spinner,
+  BlockControls,
+  MediaReplaceFlow,
+} from "@wordpress/components";
 import { isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import { useState } from "@wordpress/element";
 
@@ -15,8 +21,52 @@ export default function ({ attributes, setAttributes }) {
 
   const [imgPreview, setImgPreview] = useState(imgURL);
 
+  const selectImg = (img) => {
+    let newImgURL = null;
+
+    if (isBlobURL(img.url)) {
+      newImgURL = img.url;
+    } else {
+      newImgURL = img.sizes
+        ? img.sizes.teamMember.url
+        : img.media_details.sizes.teamMember.source_url;
+
+      setAttributes({
+        imgID: img.id,
+        imgAlt: img.alt,
+        imgURL: newImgURL,
+      });
+
+      revokeBlobURL(imgPreview);
+    }
+
+    setImgPreview(newImgURL);
+  };
+
+  const selectImgURL = (url) => {
+    setAttributes({
+      imgID: null,
+      imgAlt: null,
+      imgURL: url,
+    });
+  };
+
   return (
     <>
+      {imgPreview && (
+        <BlockControls>
+          <MediaReplaceFlow
+            name={__("Replace Image", "udemy-plus")}
+            mediaId={imgID}
+            mediaURL={imgURL}
+            allowedTypes={["image"]}
+            accept={"image/*"}
+            onError={(err) => console.error(err)}
+            onSelect={selectImg}
+            onSelectURL={selectImgURL}
+          />
+        </BlockControls>
+      )}
       <InspectorControls>
         <PanelBody title={__("Settings", "udemy-plus")}>
           <TextareaControl
@@ -38,36 +88,10 @@ export default function ({ attributes, setAttributes }) {
             allowedTypes={["image"]}
             accept={"image/*"}
             icon="admin-users"
-            onSelect={(img) => {
-              let newImgURL = null;
-
-              if (isBlobURL(img.url)) {
-                newImgURL = img.url;
-              } else {
-                newImgURL = img.sizes
-                  ? img.sizes.teamMember.url
-                  : img.media_details.sizes.teamMember.source_url;
-
-                setAttributes({
-                  imgID: img.id,
-                  imgAlt: img.alt,
-                  imgURL: newImgURL,
-                });
-
-                revokeBlobURL(imgPreview);
-              }
-
-              setImgPreview(newImgURL);
-            }}
+            onSelect={selectImg}
             onError={(err) => console.error(err)}
             disableMediaButtons={imgPreview}
-            onSelectURL={(url) => {
-              setAttributes({
-                imgID: null,
-                imgAlt: null,
-                imgURL: url,
-              });
-            }}
+            onSelectURL={selectImgURL}
           />
           <p>
             <RichText
