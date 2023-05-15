@@ -40,4 +40,5 @@ add_action('create_cuisine', 'up_save_cuisine_meta');
 add_action('cuisine_edit_form_fields', 'up_cuisine_edit_form_fields');
 add_action('edited_cuisine', 'up_save_cuisine_meta');
 add_action('save_post_recipe', 'up_save_post_recipe');
-add_action('after-setup-theme', 'up_setup_theme');
+add_action('after_setup_theme', 'up_setup_theme');
+add_filter('image_size_names_choose', 'up_custom_image_sizes');
