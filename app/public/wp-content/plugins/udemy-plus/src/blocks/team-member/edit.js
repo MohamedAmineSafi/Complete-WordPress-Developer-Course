@@ -11,6 +11,7 @@ import {
   Spinner,
   BlockControls,
   MediaReplaceFlow,
+  ToolbarButton,
 } from "@wordpress/components";
 import { isBlobURL, revokeBlobURL } from "@wordpress/blob";
 import { useState } from "@wordpress/element";
@@ -49,12 +50,14 @@ export default function ({ attributes, setAttributes }) {
       imgAlt: null,
       imgURL: url,
     });
+
+    setImgPreview(url);
   };
 
   return (
     <>
       {imgPreview && (
-        <BlockControls>
+        <BlockControls group="inline">
           <MediaReplaceFlow
             name={__("Replace Image", "udemy-plus")}
             mediaId={imgID}
@@ -65,6 +68,19 @@ export default function ({ attributes, setAttributes }) {
             onSelect={selectImg}
             onSelectURL={selectImgURL}
           />
+          <ToolbarButton
+            onClick={() => {
+              setAttributes({
+                imgID: 0,
+                imgAlt: "",
+                imgURL: "",
+              });
+
+              setImgPreview("");
+            }}
+          >
+            {__("Remove Image", "udemy-plus")}
+          </ToolbarButton>
         </BlockControls>
       )}
       <InspectorControls>
