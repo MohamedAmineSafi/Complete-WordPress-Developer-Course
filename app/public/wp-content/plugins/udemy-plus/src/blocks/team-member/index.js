@@ -36,15 +36,20 @@ registerBlockType("udemy-plus/team-member", {
         </InspectorControls>
         <div {...blockProps}>
           <div className="author-meta">
-            <img />
+            {imgURL && <img src={imgURL} alt={imgAlt} />}
             <MediaPlaceholder
               allowedTypes={["image"]}
               accept={"image/*"}
               icon="admin-users"
               onSelect={(img) => {
-                console.log(img);
+                setAttributes({
+                  imgID: img.id,
+                  imgAlt: img.alt,
+                  imgURL: img.sizes.teamMember.url,
+                });
               }}
               onError={(err) => console.error(err)}
+              disableMediaButtons={imgURL}
             />
             <p>
               <RichText
